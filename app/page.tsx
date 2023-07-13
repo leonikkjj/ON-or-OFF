@@ -15,13 +15,13 @@ export default function Home() {
   const verification = () => {
     const darkModeTag = document.querySelector(".dark");
     if (!false) {
-      toast.success("Seu computador está Ligado", {
+      toast.success("Seu computador/celular está Ligado", {
         position: "top-right",
         theme: darkModeTag ? "dark" : "light",
       });
       return;
     }
-    toast.error("Seu computador está desligado!", {
+    toast.error("Seu computador/celular está desligado!", {
       position: "top-right",
       theme: darkModeTag ? "dark" : "light",
     });
