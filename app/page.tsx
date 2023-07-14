@@ -15,7 +15,7 @@ export default function Home() {
     const darkModeTag = document.querySelector(".light");
 
     darkModeTag ? darkModeTag.classList.toggle("dark") : null;
-    htmlClassDark ? setUserLight(false) : setUserLight(true);
+    !htmlClassDark ? setUserLight(false) : setUserLight(true);
   };
 
   const verification = () => {
