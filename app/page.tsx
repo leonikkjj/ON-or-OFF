@@ -4,26 +4,33 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdOutlineDarkMode } from "react-icons/md";
+import { MdOutlineLightMode } from "react-icons/md";
+import { useState } from "react";
 
 export default function Home() {
+  const [useLight, setUserLight] = useState(true);
+
   const darkMode = () => {
+    const htmlClassDark = document.querySelector(".dark");
     const darkModeTag = document.querySelector(".light");
 
     darkModeTag ? darkModeTag.classList.toggle("dark") : null;
+    htmlClassDark ? setUserLight(false) : setUserLight(true);
   };
 
   const verification = () => {
-    const darkModeTag = document.querySelector(".dark");
+    const htmlClassDark = document.querySelector(".dark");
+
     if (!false) {
       toast.success("Seu computador/celular está Ligado", {
         position: "top-right",
-        theme: darkModeTag ? "dark" : "light",
+        theme: htmlClassDark ? "dark" : "light",
       });
       return;
     }
     toast.error("Seu computador/celular está desligado!", {
       position: "top-right",
-      theme: darkModeTag ? "dark" : "light",
+      theme: htmlClassDark ? "dark" : "light",
     });
   };
 
@@ -35,10 +42,17 @@ export default function Home() {
             onClick={darkMode}
             className="mr-6 mt-6 border-[1.5px] border-gray-600 dark:border-gray-300 rounded transition-all duration-500 dark:hover:bg-white hover:bg-slate-600 "
           >
-            <MdOutlineDarkMode
-              className="transition-all duration-500 dark:text-white dark:hover:text-slate-950 hover:text-white"
-              size={24}
-            />
+            {useLight ? (
+              <MdOutlineLightMode
+                size={24}
+                className="transition-all duration-500 dark:text-white dark:hover:text-slate-950 hover:text-white"
+              />
+            ) : (
+              <MdOutlineDarkMode
+                className="transition-all duration-500 dark:text-white dark:hover:text-slate-950 hover:text-white"
+                size={24}
+              />
+            )}
           </button>
         </header>
         <section className="flex flex-col justify-center items-center w-full h-full">
